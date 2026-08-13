@@ -12,46 +12,16 @@
   p { font-size: 14px; line-height: 1.55; color: #4a4a50; margin: 0 0 16px; }
   a.btn { display: block; text-align: center; background: #2563eb; color: #fff; text-decoration: none; padding: 10px 14px; border-radius: 8px; font-size: 14px; font-weight: 600; margin-bottom: 10px; }
   a.btn.secondary { background: #fff; color: #2563eb; border: 1px solid #2563eb; }
-  .hidden { display: none; }
   .note { font-size: 12px; color: #8a8a90; margin-top: 12px; }
 </style>
 </head>
 <body>
 <div class="card">
   <h1>mLearn</h1>
-  <p id="status">Checking whether mlearn.kikan.net is reachable from your network&hellip;</p>
-  <div id="mirror" class="hidden">
-    <p>mlearn.kikan.net seems unreachable from your network. Use the mirror instead &mdash; the full site except sign-in (downloads, guides, and docs all work):</p>
-    <a class="btn" id="mirrorLink" href="https://ru.mlearn.kikan.net/">Open the mirror &mdash; ru.mlearn.kikan.net</a>
-    <a class="btn secondary" id="canonicalLink" href="https://mlearn.kikan.net/">Try mlearn.kikan.net anyway</a>
-    <p class="note">The mLearn app itself is local-first and works fully without this website.</p>
-  </div>
-  <noscript>
-    <div>
-      <p>JavaScript is disabled, so reachability can&rsquo;t be checked. If mlearn.kikan.net doesn&rsquo;t load for you, use the mirror:</p>
-      <a class="btn" href="https://ru.mlearn.kikan.net/">Open the mirror &mdash; ru.mlearn.kikan.net</a>
-      <a class="btn secondary" href="https://mlearn.kikan.net/">Go to mlearn.kikan.net</a>
-    </div>
-  </noscript>
+  <p>Choose your region:</p>
+  <a class="btn" href="https://mlearn.kikan.net/">Global</a>
+  <a class="btn secondary" href="https://ru.mlearn.kikan.net/">Russia 🇷🇺</a>
+  <p class="note">The mLearn app itself is local-first and works fully without this website.</p>
 </div>
-<script>
-(function () {
-  var suffix = location.pathname + location.search + location.hash;
-  var canonical = 'https://mlearn.kikan.net' + suffix;
-  var done = false;
-  function go() { if (!done) { done = true; location.replace(canonical); } }
-  function fail() {
-    if (done) return;
-    done = true;
-    document.getElementById('mirrorLink').href = 'https://ru.mlearn.kikan.net' + suffix;
-    document.getElementById('canonicalLink').href = canonical;
-    document.getElementById('status').classList.add('hidden');
-    document.getElementById('mirror').classList.remove('hidden');
-  }
-  var to = setTimeout(fail, 4000);
-  fetch('https://mlearn.kikan.net/', { mode: 'no-cors', cache: 'no-store', credentials: 'omit' })
-    .then(function () { clearTimeout(to); go(); }, function () { clearTimeout(to); fail(); });
-})();
-</script>
 </body>
 </html>

@@ -1,3 +1,5 @@
 # kikan.net landing
 
-Probe-and-redirect landing for the kikan.net apex: forwards visitors to https://mlearn.kikan.net when reachable, otherwise offers the GitHub Pages mirror https://ru.mlearn.kikan.net (for regions where Cloudflare is slow or blocked).
+Static region chooser for the kikan.net apex (GitHub Pages). Visitors pick a region manually: Global (https://mlearn.kikan.net) or Russia (https://ru.mlearn.kikan.net, the GitHub Pages mirror for regions where Cloudflare is slow or blocked).
+
+No JS, no auto-redirect. kikan.net is reserved as a future homepage.
